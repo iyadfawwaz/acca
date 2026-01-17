@@ -205,7 +205,7 @@ export function toggleStar() {
    
       const sendertrans = {
          checked: false,
-            count: countsender,
+            count: Number(countsender),
             customer: customer,
             date: date,
             ex: cursender,
@@ -220,7 +220,7 @@ export function toggleStar() {
      
       const receivertrans = {
          checked: false,
-            count: countreceiver,
+            count: Number(countreceiver),
             customer: customer,
             date: date,
             ex: curreceiver,
@@ -235,7 +235,7 @@ export function toggleStar() {
 
       const qued1trans = {
          checked: false,
-            count: profitsender,
+            count: Number(profitsender),
             customer: customer,
             date: date,
             ex: cursender,
@@ -250,7 +250,7 @@ export function toggleStar() {
 
       const qued2trans = {
          checked: false,
-            count: profitreceiver,
+            count: Number(profitreceiver),
             customer: customer,
             date: date,
             ex: curreceiver,
@@ -267,7 +267,7 @@ export function toggleStar() {
 
       const cutcentersendertrans1 = {
          checked: false,
-            count: countsender,
+            count: Number(countsender),
             customer: customer,
             date: date,
             ex: cursender,
@@ -417,7 +417,7 @@ export function toggleStar() {
         updates[cutcenterreceiver+"/accounts/"+date+"/"+Date.now().toString()] = cutcenterreceivertrans3;
         
         updates[ sender+"/account/"+cursender+"/count"] = increment(Number(countsender+profitsender));
-        updates[receiver+"/account/"+receiver+"/count"] = increment(-Number(countreceiver+profitreceiver));
+        updates[receiver+"/account/"+curreceiver+"/count"] = increment(-Number(countreceiver+profitreceiver));
 
         updates[cutcentersender+"/account/"+dollar+"/count"] = increment(-Number((countreceiver+profitreceiver)/curs.get(curreceiver).rate));
         updates[cutcentersender+"/account/"+cursender+"/count"] = increment(Number(countsender+profitsender));
