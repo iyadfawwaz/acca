@@ -445,13 +445,18 @@ export function toggleStar() {
         
         updates[sender+"/account/"+cursender+"/count"] = increment(Number(countsender+profitsender));
         updates[receiver+"/account/"+curreceiver+"/count"] = increment(-Number(countreceiver+profitreceiver));
-        if(profitsender!=0){
+
+          updates[qued+"/account/"+cursender+"/count"]=increment(-Number(profitsender-profitreceiver));
+        
+        if(profitsender!=0 ){
+          
           updates[qued+"/accounts/"+date+"/"+key] = qued1trans;
-          updates[qued+"/account/"+cursender+"/count"]=increment(-Number(profitsender));
+        
         }
         if(profitreceiver!=0){
+
           updates[qued+"/accounts/"+date+"/"+Date.now().toString()] = qued2trans;
-          updates[qued+"/account/"+cursender+"/count"]=increment(Number(profitreceiver));
+      
         }
 
         update(child(databaseReference,"users"), updates);
