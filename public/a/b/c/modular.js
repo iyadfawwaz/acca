@@ -450,7 +450,7 @@ export function toggleStar() {
           updates[qued+"/account/"+cursender+"/count"]=increment(-Number(profitsender));
         }
         if(profitreceiver!=0){
-          updates[qued+"/accounts/"+date+"/"+new Date().now()] = qued2trans;
+          updates[qued+"/accounts/"+date+"/"+Date.now().toString()] = qued2trans;
           updates[qued+"/account/"+cursender+"/count"]=increment(Number(profitreceiver));
         }
 
