@@ -407,14 +407,14 @@ export function toggleStar() {
       if(cursender!=curreceiver && cursender!=dollar && curreceiver!=dollar){
 
 
-         updates[sender+"/accounts/"+date+"/"+key] = sendertrans;
-        updates[receiver+"/accounts/"+date+"/"+key] = receivertrans;
+         updates[sender+"/accounts/"+key] = sendertrans;
+        updates[receiver+"/accounts/"+key] = receivertrans;
         
-        updates[cutcentersender+"/accounts/"+date+"/"+key] = centraltrans1;
-        updates[cutcentersender+"/accounts/"+date+"/"+Date.now().toString()] = cutcentersendertrans3;
+        updates[cutcentersender+"/accounts/"+key] = centraltrans1;
+        updates[cutcentersender+"/accounts/"+Date.now().toString()] = cutcentersendertrans3;
 
-        updates[cutcenterreceiver+"/accounts/"+date+"/"+key] = centraltrans2;
-        updates[cutcenterreceiver+"/accounts/"+date+"/"+Date.now().toString()] = cutcenterreceivertrans3;
+        updates[cutcenterreceiver+"/accounts/"+key] = centraltrans2;
+        updates[cutcenterreceiver+"/accounts/"+Date.now().toString()] = cutcenterreceivertrans3;
         
         updates[ sender+"/account/"+cursender+"/count"] = increment(Number(countsender+profitsender));
         updates[receiver+"/account/"+curreceiver+"/count"] = increment(-Number(countreceiver+profitreceiver));
@@ -440,8 +440,8 @@ export function toggleStar() {
 
       if(cursender==curreceiver){
        
-        updates[sender+"/accounts/"+date+"/"+key] = sendertrans;
-        updates[receiver+"/accounts/"+date+"/"+key] = receivertrans;
+        updates[sender+"/accounts/"+key] = sendertrans;
+        updates[receiver+"/accounts/"+key] = receivertrans;
         
         updates[sender+"/account/"+cursender+"/count"] = increment(Number(countsender+profitsender));
         updates[receiver+"/account/"+curreceiver+"/count"] = increment(-Number(countreceiver+profitreceiver));
@@ -450,12 +450,12 @@ export function toggleStar() {
         
         if(profitsender!=0 ){
           
-          updates[qued+"/accounts/"+date+"/"+key] = qued1trans;
+          updates[qued+"/accounts/"+key] = qued1trans;
         
         }
         if(profitreceiver!=0){
 
-          updates[qued+"/accounts/"+date+"/"+Date.now().toString()] = qued2trans;
+          updates[qued+"/accounts/"+Date.now().toString()] = qued2trans;
       
         }
 
@@ -471,13 +471,13 @@ export function toggleStar() {
         }else{
           if(cursender==dollar){
 
-        updates[sender+"/accounts/"+date+"/"+key] = sendertrans;
-        updates[receiver+"/accounts/"+date+"/"+key] = receivertrans;
+        updates[sender+"/accounts/"+key] = sendertrans;
+        updates[receiver+"/accounts/"+key] = receivertrans;
         
-        updates[cutcenterreceiver+"/accounts/"+date+"/"+key] = cutcenterreceivertrans1;
-        updates[cutcenterreceiver+"/accounts/"+date+"/"+Date.now().toString()] = cutcenterreceivertrans2;
+        updates[cutcenterreceiver+"/accounts/"+key] = cutcenterreceivertrans1;
+        updates[cutcenterreceiver+"/accounts/"+Date.now().toString()] = cutcenterreceivertrans2;
         
-        updates[frog+"/accounts/"+date+"/"+key] = centraltrans;
+        updates[frog+"/accounts/"+key] = centraltrans;
 
         updates[sender+"/account/"+cursender+"/count"] = increment(Number(countsender+profitsender));
         updates[receiver+"/account/"+curreceiver+"/count"] = increment(-Number(countreceiver+profitreceiver));
@@ -500,10 +500,10 @@ export function toggleStar() {
           }
           if(curreceiver==dollar){
 
-        updates[sender+"/accounts/"+date+"/"+key] = sendertrans;
-        updates[receiver+"/accounts/"+date+"/"+key] = receivertrans;
-        updates[cutcentersender+"/accounts/"+date+"/"+key] = cutcentersendertrans1;
-        updates[cutcentersender+"/accounts/"+date+"/"+Date.now().toString()] = cutcentersendertrans2;
+        updates[sender+"/accounts/"+key] = sendertrans;
+        updates[receiver+"/accounts/"+key] = receivertrans;
+        updates[cutcentersender+"/accounts/"+key] = cutcentersendertrans1;
+        updates[cutcentersender+"/accounts/"+Date.now().toString()] = cutcentersendertrans2;
        
         updates[sender+"/account/"+cursender+"/count"] = increment(Number(countsender+profitsender));
         updates[receiver+"/account/"+curreceiver+"/count"] = increment(-Number(countreceiver+profitreceiver));
@@ -597,7 +597,7 @@ export function toggleStar() {
 
       const cutcentersendertrans1 = {
          checked: false,
-            count: countsender,
+            count: Number(countsender),
             customer: cutprice,
             date: date,
             ex: cursender,
@@ -737,14 +737,14 @@ export function toggleStar() {
       if(cursender!=curreceiver && cursender!=dollar && curreceiver!=dollar){
 
 
-         updates[user+"/accounts/"+date+"/"+key] = sendertrans;
-        updates[user+"/accounts/"+date+"/"+Date.now().toString()] = receivertrans;
+         updates[user+"/accounts/"+key] = sendertrans;
+        updates[user+"/accounts/"+Date.now().toString()] = receivertrans;
         
-        updates[cutcentersender+"/accounts/"+date+"/"+key] = centraltrans1;
-        updates[cutcentersender+"/accounts/"+date+"/"+Date.now().toString()] = cutcentersendertrans3;
+        updates[cutcentersender+"/accounts/"+key] = centraltrans1;
+        updates[cutcentersender+"/accounts/"+Date.now().toString()] = cutcentersendertrans3;
 
-        updates[cutcenterreceiver+"/accounts/"+date+"/"+key] = centraltrans2;
-        updates[cutcenterreceiver+"/accounts/"+date+"/"+Date.now().toString()] = cutcenterreceivertrans3;
+        updates[cutcenterreceiver+"/accounts/"+key] = centraltrans2;
+        updates[cutcenterreceiver+"/accounts/"+Date.now().toString()] = cutcenterreceivertrans3;
         
         updates[ user+"/account/"+cursender+"/count"] = increment(Number(countsender));
         updates[user+"/account/"+receiver+"/count"] = increment(-Number(countreceiver));
@@ -762,13 +762,13 @@ export function toggleStar() {
                                       }else{
           if(cursender==dollar){
 
-        updates[user+"/accounts/"+date+"/"+key] = sendertrans;
-        updates[user+"/accounts/"+date+"/"+Date.now().toString()] = receivertrans;
+        updates[user+"/accounts/"+key] = sendertrans;
+        updates[user+"/accounts/"+Date.now().toString()] = receivertrans;
         
-        updates[cutcenterreceiver+"/accounts/"+date+"/"+key] = cutcenterreceivertrans1;
-        updates[cutcenterreceiver+"/accounts/"+date+"/"+Date.now().toString()] = cutcenterreceivertrans2;
+        updates[cutcenterreceiver+"/accounts/"+key] = cutcenterreceivertrans1;
+        updates[cutcenterreceiver+"/accounts/"+Date.now().toString()] = cutcenterreceivertrans2;
         
-        updates[frog+"/accounts/"+date+"/"+key] = centraltrans;
+        updates[frog+"/accounts/"+key] = centraltrans;
 
         updates[user+"/account/"+cursender+"/count"] = increment(Number(countsender));
         updates[user+"/account/"+curreceiver+"/count"] = increment(-Number(countreceiver));
@@ -791,11 +791,11 @@ export function toggleStar() {
           }
           if(curreceiver==dollar){
 
-        updates[user+"/accounts/"+date+"/"+key] = sendertrans;
-        updates[user+"/accounts/"+date+"/"+Date.now().toString()] = receivertrans;
+        updates[user+"/accounts/"+key] = sendertrans;
+        updates[user+"/accounts/"+Date.now().toString()] = receivertrans;
         
-        updates[cutcentersender+"/accounts/"+date+"/"+key] = cutcentersendertrans1;
-        updates[cutcentersender+"/accounts/"+date+"/"+Date.now().toString()] = cutcentersendertrans2;
+        updates[cutcentersender+"/accounts/"+key] = cutcentersendertrans1;
+        updates[cutcentersender+"/accounts/"+Date.now().toString()] = cutcentersendertrans2;
        
         updates[user+"/account/"+cursender+"/count"] = increment(Number(countsender));
         updates[user+"/account/"+curreceiver+"/count"] = increment(-Number(countreceiver));
@@ -1142,4 +1142,5 @@ logo.addEventListener("click",function(){
 }
 
  
+
 
