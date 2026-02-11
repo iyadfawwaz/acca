@@ -181,6 +181,7 @@ export async function loadUserCurs(user) {
 			  t.style.color="green";
 		  }else{
 			  t.style.color="red";
+		  }
       }else{
         t.innerText="0";
       }
@@ -1158,6 +1159,7 @@ logo.addEventListener("click",function(){
 }
 
  
+
 
 
 
