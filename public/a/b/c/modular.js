@@ -176,8 +176,11 @@ export async function loadUserCurs(user) {
 
       var t= document.getElementById(item.val().code);
       if(snapshotxm.val()){
-
       t.innerText=snapshotxm.val().count;
+		  if(snapshotxm.val().count>0){
+			  t.style.color="green";
+		  }else{
+			  t.style.color="red";
       }else{
         t.innerText="0";
       }
@@ -1155,6 +1158,7 @@ logo.addEventListener("click",function(){
 }
 
  
+
 
 
 
