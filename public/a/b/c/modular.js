@@ -9,6 +9,7 @@
 
   //const company = localStorage.getItem("companyid")+"/";
    const company ="company12345/";
+/*
   export const firebaseConfigx = {
   apiKey: "AIzaSyC0esGNBo2_2w4JucRans9zBZulhgTAbb0",
   authDomain: "sy-iyad.firebaseapp.com",
@@ -18,6 +19,17 @@
   messagingSenderId: "873740808897",
   appId: "1:873740808897:web:f1c636369a510256e41a40",
   measurementId: "G-7VLX9WHL3H"
+};
+*/
+export const firebaseConfig = {
+  apiKey: "AIzaSyA8Wo9SVYsIfkXoP5shUz7d45ysTp8qOWw",
+  authDomain: "iconic-indexer-315711.firebaseapp.com",
+  databaseURL: "https://iconic-indexer-315711-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "iconic-indexer-315711",
+  storageBucket: "iconic-indexer-315711.firebasestorage.app",
+  messagingSenderId: "971689870803",
+  appId: "1:971689870803:web:d8c88e5b067cfff5b6db26",
+  measurementId: "G-ZZ5F52WXYY"
 };
 
 export const app = initializeApp(firebaseConfigx);
@@ -1142,5 +1154,6 @@ logo.addEventListener("click",function(){
 }
 
  
+
 
 
