@@ -848,10 +848,11 @@ export function toggleStar() {
  
         
         console.log(dates.val()+user+dates);
-        dates.forEach((keys)=>{
+       // dates.forEach((keys)=>{
           
-          var x=1;
-         keys.forEach((progx)=>{
+       //   var x=1;
+         dates.forEach((progx)=>{
+			 var x=1;
            var prog = progx.val();
            var from = document.getElementById("date2").value;
             var to = document.getElementById("date3").value;
@@ -932,7 +933,7 @@ export function toggleStar() {
           x++;
           //table.appendChild(trx);
         
-        });
+      //  });
       });
 
       labelx.textContent=userx[userx.selectedIndex].text;
@@ -1154,6 +1155,7 @@ logo.addEventListener("click",function(){
 }
 
  
+
 
 
 
