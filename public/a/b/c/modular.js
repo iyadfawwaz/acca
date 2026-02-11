@@ -928,12 +928,12 @@ export function toggleStar() {
              //   x++;
                 }
               }
-          });
+       //   });
 
           x++;
           //table.appendChild(trx);
         
-      //  });
+        });
       });
 
       labelx.textContent=userx[userx.selectedIndex].text;
@@ -1155,6 +1155,7 @@ logo.addEventListener("click",function(){
 }
 
  
+
 
 
 
