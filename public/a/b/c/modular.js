@@ -21,7 +21,7 @@
   measurementId: "G-7VLX9WHL3H"
 };
 */
-export const firebaseConfig = {
+export const firebaseConfigx = {
   apiKey: "AIzaSyA8Wo9SVYsIfkXoP5shUz7d45ysTp8qOWw",
   authDomain: "iconic-indexer-315711.firebaseapp.com",
   databaseURL: "https://iconic-indexer-315711-default-rtdb.europe-west1.firebasedatabase.app",
@@ -1154,6 +1154,7 @@ logo.addEventListener("click",function(){
 }
 
  
+
 
 
 
