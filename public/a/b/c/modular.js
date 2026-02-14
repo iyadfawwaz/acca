@@ -212,8 +212,8 @@ export function toggleStar() {
                                        
                                     
                           
-      var cutcentersender = " مركز قطع "+cursender;
-      var cutcenterreceiver = " مركز قطع "+curreceiver;
+      var cutcentersender = "مركز قطع "+cursender;
+      var cutcenterreceiver = "مركز قطع "+curreceiver;
 
       const dollar = "دولار أمريكي";
       const frog = "فروق صرف إيجابية";
@@ -1159,6 +1159,7 @@ logo.addEventListener("click",function(){
 }
 
  
+
 
 
 
