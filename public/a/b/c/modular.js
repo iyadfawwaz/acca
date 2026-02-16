@@ -468,11 +468,12 @@ export function toggleStar() {
       }
 
       if(cursender==curreceiver){
-       
+
+		  sendertrans.latestAmount=getLatest(sender,cursender);
         updates[sender+"/accounts/"+key] = sendertrans;
-		   updates[sender+"/accounts/"+key+"/latestAmount"] = getLatest(sender,cursender);
+		  receivertrans.latestAmount = getLatest(receiver,curreceiver);
         updates[receiver+"/accounts/"+key] = receivertrans;
-		   updates[receiver+"/accounts/"+key+"/latestAmount"] = getLatest(receiver,curreceiver);
+		   
         
         updates[sender+"/account/"+cursender+"/count"] = increment(Number(countsender+profitsender));
         updates[receiver+"/account/"+curreceiver+"/count"] = increment(-Number(countreceiver+profitreceiver));
@@ -480,15 +481,16 @@ export function toggleStar() {
           updates[qued+"/account/"+cursender+"/count"]=increment(-Number(profitsender-profitreceiver));
         
         if(profitsender!=0 ){
-          
+           qued1trans.latestAmount = getLatest(qued,cursender);
           updates[qued+"/accounts/"+key] = qued1trans;
-			 updates[qued+"/accounts/"+key+"/latestAmount"] = getLatest(qued,cursender);
+			
         
         }
         if(profitreceiver!=0){
 
+			qued2trans.latestAmount = getLatest(qued,curreceiver);
           updates[qued+"/accounts/"+Date.now().toString()] = qued2trans;
-			 updates[qued+"/accounts/"+key+"/latestAmount"] = getLatest(qued,curreceiver);
+			 
       
         }
 
@@ -1189,6 +1191,7 @@ logo.addEventListener("click",function(){
 }
 
  
+
 
 
 
