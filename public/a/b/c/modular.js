@@ -561,7 +561,7 @@ export function toggleStar() {
 export async function getLatest(username,currency){
 
     
- const r = await get(child(likesRef,username)).then((users)=>{
+ const r = await get(child(databaseReferencex,"/users/"+username)).then((users)=>{
   
    
   
@@ -1176,6 +1176,7 @@ logo.addEventListener("click",function(){
 }
 
  
+
 
 
 
