@@ -457,7 +457,9 @@ export function toggleStar() {
       if(cursender==curreceiver){
        
         updates[sender+"/accounts/"+key] = sendertrans;
+		   updates[sender+"/accounts/"+key+"/latestAmount"] = getLatest(sender,cursender);
         updates[receiver+"/accounts/"+key] = receivertrans;
+		   updates[receiver+"/accounts/"+key+"/latestAmount"] = getLatest(receiver,curreceiver);
         
         updates[sender+"/account/"+cursender+"/count"] = increment(Number(countsender+profitsender));
         updates[receiver+"/account/"+curreceiver+"/count"] = increment(-Number(countreceiver+profitreceiver));
@@ -467,11 +469,13 @@ export function toggleStar() {
         if(profitsender!=0 ){
           
           updates[qued+"/accounts/"+key] = qued1trans;
+			 updates[qued+"/accounts/"+key+"/latestAmount"] = getLatest(qued,cursender);
         
         }
         if(profitreceiver!=0){
 
           updates[qued+"/accounts/"+Date.now().toString()] = qued2trans;
+			 updates[qued+"/accounts/"+key+"/latestAmount"] = getLatest(qued,curreceiver);
       
         }
 
@@ -517,6 +521,7 @@ export function toggleStar() {
           if(curreceiver==dollar){
 
         updates[sender+"/accounts/"+key] = sendertrans;
+			  updates[sender+"/accounts/"+key+"/latestAmount"] = getLatest(sender,cursender);
         updates[receiver+"/accounts/"+key] = receivertrans;
         updates[cutcentersender+"/accounts/"+key] = cutcentersendertrans1;
         updates[cutcentersender+"/accounts/"+Date.now().toString()] = cutcentersendertrans2;
@@ -552,6 +557,18 @@ export function toggleStar() {
   
 
     }
+
+export async function getLatest(username,currency){
+
+    
+ const r = await get(child(likesRef,username)).then((users)=>{
+  
+   
+  
+     return Number( users.val().account[currency].count);
+  });
+  return r;
+}
 
 
 
@@ -1159,6 +1176,7 @@ logo.addEventListener("click",function(){
 }
 
  
+
 
 
 
