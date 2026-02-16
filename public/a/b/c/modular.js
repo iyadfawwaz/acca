@@ -231,6 +231,7 @@ export function toggleStar() {
             rprofit: profitreceiver,
             sender: sender,
             sprofit: profitsender,
+		  latestAmount:0,
             sumAll: Number(countsender+profitsender)
       }
      
@@ -244,6 +245,7 @@ export function toggleStar() {
             notice: "",
             reciever: receiver,
             rprofit: profitreceiver,
+		   latestAmount:0,
             sender: sender,
             sprofit: profitsender,
             sumAll: -Number(countreceiver+profitreceiver)
@@ -254,6 +256,7 @@ export function toggleStar() {
             count: Number(profitsender),
             customer: customer,
             date: date,
+		   latestAmount:0,
             ex: cursender,
             key: key,
             notice: "",
@@ -267,6 +270,7 @@ export function toggleStar() {
       const qued2trans = {
          checked: false,
             count: Number(profitreceiver),
+		   latestAmount:0,
             customer: customer,
             date: date,
             ex: curreceiver,
@@ -284,6 +288,7 @@ export function toggleStar() {
       const cutcentersendertrans1 = {
          checked: false,
             count: Number(countsender),
+		   latestAmount:0,
             customer: customer,
             date: date,
             ex: cursender,
@@ -299,6 +304,7 @@ export function toggleStar() {
       const cutcentersendertrans2 = {
          checked: false,
             count: Number(countreceiver),
+		   latestAmount:0,
             customer: customer,
             date: date,
             ex: curreceiver,
@@ -315,6 +321,7 @@ export function toggleStar() {
          checked: false,
             count:  Number(countreceiver/curs.get(curreceiver).rate),
             customer: customer,
+		   latestAmount:0,
             date: date,
             ex: cursender,
             key: key,
@@ -331,6 +338,7 @@ export function toggleStar() {
             count: Number(countreceiver),
             customer: customer,
             date: date,
+		   latestAmount:0,
             ex: curreceiver,
             key: key,
             notice: "",
@@ -347,6 +355,7 @@ export function toggleStar() {
          checked: false,
             count: Number(countsender-(countreceiver/curs.get(curreceiver).rate)),
             customer: customer,
+		   latestAmount:0,
             date: date,
             ex: cursender,
             key: key,
@@ -363,6 +372,7 @@ export function toggleStar() {
          checked: false,
             count: Number(countreceiver),
             customer: customer,
+		   latestAmount:0,
             date: date,
             ex: curreceiver,
             key: key,
@@ -375,6 +385,7 @@ export function toggleStar() {
       }
       const centraltrans1 = {
          checked: false,
+		   latestAmount:0,
             count: Number(countreceiver/curs.get(curreceiver).rate),
             customer: customer,
             date: date,
@@ -389,6 +400,7 @@ export function toggleStar() {
       }
       const centraltrans2 = {
          checked: false,
+		   latestAmount:0,
             count: Number(countreceiver/curs.get(curreceiver).rate),
             customer: customer,
             date: date,
@@ -404,6 +416,7 @@ export function toggleStar() {
 
       const cutcentersendertrans3 = {
          checked: false,
+		   latestAmount:0,
             count: Number(countsender),
             customer: customer,
             date: date,
@@ -1176,6 +1189,7 @@ logo.addEventListener("click",function(){
 }
 
  
+
 
 
 
