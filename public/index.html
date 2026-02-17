@@ -111,7 +111,7 @@ onAuthStateChanged(auth, (user) => {
         // نجاح تسجيل الدخول
         const user = userCredential.user;
         Swal.fire({
-    title: 'logged in '+user,
+    title: 'logged in '+user.uid,
     allowOutsideClick: false,
     didOpen: () => {
       Swal.showLoading();
