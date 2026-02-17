@@ -191,7 +191,7 @@ export async function loadUserCurs(user) {
 });
 }
 
-export function toggleStar() {
+export async function toggleStar() {
 
      let sender = senderx[senderx.selectedIndex].text;
   let receiver = receiverx[receiverx.selectedIndex].text;
@@ -469,9 +469,9 @@ export function toggleStar() {
 
       if(cursender==curreceiver){
 
-		  sendertrans.latestAmount=getLatest(sender,cursender);
+		  sendertrans.latestAmount = await getLatest(sender,cursender);
         updates[sender+"/accounts/"+key] = sendertrans;
-		  receivertrans.latestAmount = getLatest(receiver,curreceiver);
+		  receivertrans.latestAmount = await getLatest(receiver,curreceiver);
         updates[receiver+"/accounts/"+key] = receivertrans;
 		   
         
@@ -481,14 +481,14 @@ export function toggleStar() {
           updates[qued+"/account/"+cursender+"/count"]=increment(-Number(profitsender-profitreceiver));
         
         if(profitsender!=0 ){
-           qued1trans.latestAmount = getLatest(qued,cursender);
+           qued1trans.latestAmount = await getLatest(qued,cursender);
           updates[qued+"/accounts/"+key] = qued1trans;
 			
         
         }
         if(profitreceiver!=0){
 
-			qued2trans.latestAmount = getLatest(qued,curreceiver);
+			qued2trans.latestAmount = await getLatest(qued,curreceiver);
           updates[qued+"/accounts/"+Date.now().toString()] = qued2trans;
 			 
       
@@ -1191,6 +1191,7 @@ logo.addEventListener("click",function(){
 }
 
  
+
 
 
 
