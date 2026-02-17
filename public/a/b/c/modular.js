@@ -469,9 +469,9 @@ export async function toggleStar() {
 
       if(cursender==curreceiver){
 
-		  sendertrans.latestAmount = await getLatest(sender,cursender);
+		  sendertrans.latestAmount = await getLatest(sender,cursender)+Number(countsender+profitsender);
         updates[sender+"/accounts/"+key] = sendertrans;
-		  receivertrans.latestAmount = await getLatest(receiver,curreceiver);
+		  receivertrans.latestAmount = await getLatest(receiver,curreceiver)+Number(-countreceiver-profitreceiver);
         updates[receiver+"/accounts/"+key] = receivertrans;
 		   
         
@@ -481,14 +481,14 @@ export async function toggleStar() {
           updates[qued+"/account/"+cursender+"/count"]=increment(-Number(profitsender-profitreceiver));
         
         if(profitsender!=0 ){
-           qued1trans.latestAmount = await getLatest(qued,cursender);
+           qued1trans.latestAmount = await getLatest(qued,cursender)+Number(-profitsender);
           updates[qued+"/accounts/"+key] = qued1trans;
 			
         
         }
         if(profitreceiver!=0){
 
-			qued2trans.latestAmount = await getLatest(qued,curreceiver);
+			qued2trans.latestAmount = await getLatest(qued,curreceiver)+Number(profitreceiver);
           updates[qued+"/accounts/"+Date.now().toString()] = qued2trans;
 			 
       
