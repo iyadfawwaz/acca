@@ -79,7 +79,7 @@ onAuthStateChanged(auth, (user) => {
   } else {
     // المستخدم غير مسجل، اترك الصفحة كما هي ليقوم بتسجيل الدخول
      Swal.fire({
-    title:"لا يوجد مستخدم نشط.",
+    title:"لا يوجد مستخدم نشط حاليا.",
     allowOutsideClick: false,
     didOpen: () => {
       Swal.showLoading();
