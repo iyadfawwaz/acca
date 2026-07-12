@@ -274,7 +274,7 @@ export function ss(){
   alert("ss");
 }
 
-
+/*
 export async function toggleStar() {
   // 1. قراءة البيانات من عناصر الواجهة وتأمين تحويل الأرقام
   let sender = senderx[senderx.selectedIndex]?.text || "";
@@ -383,7 +383,7 @@ export async function toggleStar() {
     if (saveButton) saveButton.disabled = false;
   }
 }
-
+*/
 
 /*
 export async function loadUserCurs(user) {
@@ -414,7 +414,7 @@ export async function loadUserCurs(user) {
 }
 */
 
-/*
+
 export async function toggleStar() {
 
      let sender = senderx[senderx.selectedIndex].text;
@@ -797,7 +797,7 @@ export async function toggleStar() {
 
     }
 
-    */
+    
 
 export async function getLatest(username,currency){
 
