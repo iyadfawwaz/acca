@@ -274,6 +274,117 @@ export function ss(){
   alert("ss");
 }
 
+
+export async function toggleStar() {
+  // 1. قراءة البيانات من عناصر الواجهة وتأمين تحويل الأرقام
+  let sender = senderx[senderx.selectedIndex]?.text || "";
+  let receiver = receiverx[receiverx.selectedIndex]?.text || "";
+  let cursender = cursenderx[cursenderx.selectedIndex]?.text || "";
+  let curreceiver = curreceiverx[curreceiverx.selectedIndex]?.text || "";
+  
+  var countsender = Number(countsenderx.value) || 0;
+  var countreceiver = Number(countreceiverx.value) || 0;
+  var profitsender = Number(profitsenderx.value) || 0;
+  var profitreceiver = Number(profitreceiverx.value) || 0;
+  var customer = customerx.value || "";
+  
+  // توليد طابع زمني دقيق للمفتاح والترتيب الزمني المستقبلي
+  var key = Date.now().toString();
+  var date = moment().format('DD-MM-YYYY');
+
+  // تعطيل زر الحفظ فوراً لمنع التكرار والنقرات المزدوجة من المستخدم
+  const saveButton = document.forms["frm"]?.["save"];
+  if (saveButton) saveButton.disabled = true;
+
+  // تجهيز مسميات مراكز القطع والقيود المحاسبية
+  var cutcentersender = "مركز قطع " + cursender;
+  var cutcenterreceiver = "مركز قطع " + curreceiver;
+  const dollar = "دولار أمريكي";
+  const frog = "فروق صرف إيجابية";
+  var qued = "قيود محققة";
+
+  // 2. بناء كائنات البيانات (القيود)
+  const sendertrans = {
+    checked: false,
+    count: countsender,
+    customer: customer,
+    date: date,
+    ex: cursender,
+    key: key,
+    notice: "",
+    reciever: receiver,
+    rprofit: profitreceiver,
+    sender: sender,
+    sprofit: profitsender,
+    latestAmount: 0,
+    sumAll: Number(countsender + profitsender)
+  };
+     
+  const receivertrans = {
+    checked: false,
+    count: countreceiver,
+    customer: customer,
+    date: date,
+    ex: curreceiver,
+    key: key,
+    notice: "",
+    reciever: receiver,
+    rprofit: profitreceiver,
+    latestAmount: 0,
+    sender: sender,
+    sprofit: profitsender,
+    sumAll: -Number(countreceiver + profitreceiver)
+  };
+
+  const qued1trans = {
+    checked: false,
+    count: profitsender,
+    customer: customer,
+    date: date,
+    latestAmount: 0,
+    ex: cursender,
+    key: key,
+    notice: "ربح من معاملة قيد"
+  };
+
+  // 3. الحل العبقري: تجميع كل مسارات التحديث في كائن واحد (Multi-Path Update Object)
+  // هذا الأسلوب يضمن حفظ كل الحركات أو فشلها معاً بدون تعليق الاتصال
+  const updatedData = {};
+
+  // مسار حفظ حركة المركز المرسل
+  updatedData[`/transactions/${key}_sender`] = sendertrans;
+  // مسار حفظ حركة المركز المستلم
+  updatedData[`/transactions/${key}_receiver`] = receivertrans;
+  // مسار حفظ حركة قيد الأرباح
+  updatedData[`/transactions/${key}_profit`] = qued1trans;
+
+  // تحديث الأرصدة الحالية التراكمية للمراكز مباشرة في نفس الطلب عبر السيرفر
+  // استخدام increment يمنع مشاكل تضارب البيانات في حال أدخل مستخدمان في نفس اللحظة
+  updatedData[`/users/${sender}/account/${cursender}/count`] = increment(sendertrans.sumAll);
+  updatedData[`/users/${receiver}/account/${curreceiver}/count`] = increment(receivertrans.sumAll);
+
+  try {
+    // إرسال الطلب الموحد دفعة واحدة للسيرفر
+    await update(ref(db, companyx), updatedData);
+    
+    // إشعار بنجاح العملية وتصفير النموذج
+    alert("تم حفظ القيد وتحديث الأرصدة بنجاح ولحظياً!");
+    document.forms["frm"]?.reset();
+    
+    // تحديث الأرصدة المعروضة على الشاشة للمستخدم الحالي محلياً
+    if (typeof loadUserCurs === "function") {
+      await loadUserCurs(sender);
+    }
+  } catch (error) {
+    console.error("خطأ أثناء الحفظ الموحد والتحديث:", error);
+    alert("حدث خطأ أثناء الحفظ، يرجى التحقق من الشبكة.");
+  } finally {
+    // إعادة تفعيل زر الحفظ بعد انتهاء العملية بالكامل
+    if (saveButton) saveButton.disabled = false;
+  }
+}
+
+
 /*
 export async function loadUserCurs(user) {
 
@@ -303,6 +414,7 @@ export async function loadUserCurs(user) {
 }
 */
 
+/*
 export async function toggleStar() {
 
      let sender = senderx[senderx.selectedIndex].text;
@@ -684,6 +796,8 @@ export async function toggleStar() {
   
 
     }
+
+    */
 
 export async function getLatest(username,currency){
 
