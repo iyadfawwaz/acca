@@ -54,6 +54,8 @@ console.log(companyx);
   var printSelect = document.getElementById("select4");
   var printcurrency = document.getElementById("currency");
 
+
+  /*
 export function loadusers(selectItem){
 
 get(child(databaseReferencex,"users")).then((snapshotx)=>{
@@ -83,9 +85,112 @@ get(child(databaseReferencex,"users")).then((snapshotx)=>{
 
 });
 }
+*/
+
+export function loadusers(selectItem) {
+  get(child(databaseReferencex, "users")).then((snapshotx) => {
+    if (!snapshotx.exists()) return;
+
+    // إنشاء حاوية مؤقتة لتسريع الأداء ومنع تكرار الرسم في المتصفح
+    const fragment = document.createDocumentFragment();
+
+    snapshotx.forEach((childSnapshot) => {
+      const userinfo = childSnapshot.val();
+      const username = childSnapshot.key;
+
+      const senderoption = document.createElement("option");
+      senderoption.style.cursor = "none !important";
+      senderoption.text = username;
+      senderoption.textContent = username;
+      senderoption.value = userinfo.uid;
+      
+      fragment.appendChild(senderoption);
+    });
+
+    // إضافة كل العناصر دفعة واحدة وتحديث المظهر مرة واحدة فقط
+    selectItem.appendChild(fragment);
+    $(selectItem).trigger("chosen:updated");
+  }).catch(err => console.error("Error loading users:", err));
+}
+
+
  export const curs= new Map();
 export var cursrate = [];
 
+
+
+export async function loadCurrencies(selectItem) {
+  try {
+    const snapshotx = await get(child(databaseReferencex, "currencies"));
+    if (!snapshotx.exists()) return curs;
+
+    const fragment = document.createDocumentFragment();
+    let x = 0;
+
+    snapshotx.forEach((childSnapshot) => {
+      const currencyinfo = childSnapshot.val();
+      const currencyname = childSnapshot.key;
+      const currencyCode = currencyinfo.code;
+
+      // تحديث الخريطة والمصفوفة محلياً
+      curs.set(currencyname, currencyinfo);
+      cursrate[currencyCode] = currencyinfo;
+      localStorage.setItem(x.toString(), JSON.stringify(currencyinfo)); // تحويل لـ String لتجنب الأخطاء
+
+      // بناء خيارات الواجهة إذا كان الـ Select موجوداً
+      if (selectItem) {
+        const currencyfromoption = document.createElement("option");
+        currencyfromoption.style.cursor = "none !important";
+        currencyfromoption.text = currencyname;
+        currencyfromoption.textContent = currencyname;
+        currencyfromoption.value = currencyCode;
+        fragment.appendChild(currencyfromoption);
+      }
+      x++;
+    });
+
+    if (selectItem) {
+      selectItem.appendChild(fragment);
+      $(selectItem).trigger("chosen:updated");
+    }
+
+    return curs;
+  } catch (error) {
+    console.error("Error loading currencies:", error);
+    return curs;
+  }
+}
+
+export async function loadUserCurs(user) {
+  try {
+    // جلب حسابات المستخدم بالكامل بطلب واحد بدلاً من طلب لكل عملة
+    const userAccountsSnapshot = await get(child(databaseReferencex, `users/${user}/account`));
+    const userAccounts = userAccountsSnapshot.exists() ? userAccountsSnapshot.val() : {};
+
+    // الآن نمر على العملات الكاش المتوفرة لدينا محلياً دون ضرب السيرفر مجدداً
+    curs.forEach((itemValue, itemKey) => {
+      const currencyCode = itemValue.code;
+      const element = document.getElementById(currencyCode);
+      
+      if (!element) return; // تخطي إذا لم يكن العنصر موجوداً في الـ HTML
+
+      const accountData = userAccounts[itemKey];
+
+      if (accountData && accountData.count !== undefined) {
+        const count = Number(accountData.count);
+        element.innerText = count;
+        element.style.color = count > 0 ? "green" : "red";
+      } else {
+        element.innerText = "0";
+        element.style.color = "black";
+      }
+    });
+  } catch (error) {
+    console.error("Error loading user currencies:", error);
+  }
+}
+
+/*
 export async function loadCurrencyLocal(){
 
   var x=0;
@@ -108,7 +213,9 @@ export async function loadCurrencyLocal(){
 return curs;
 
 }
+*/
 
+/*
 export async function loadCurrencies(selectItem){
 
 
@@ -157,6 +264,8 @@ export async function loadCurrencies(selectItem){
 //return Promise.resolve(curs);
 return curs;
 }
+*/
+
  export function logg(){
  
 console.error(curs.get("دولار أمريكي").rate);
