@@ -190,7 +190,7 @@ export async function loadUserCurs(user) {
   }
 }
 
-/*
+
 export async function loadCurrencyLocal(){
 
   var x=0;
@@ -213,7 +213,7 @@ export async function loadCurrencyLocal(){
 return curs;
 
 }
-*/
+
 
 /*
 export async function loadCurrencies(selectItem){
@@ -273,6 +273,8 @@ console.error(curs.get("دولار أمريكي").rate);
 export function ss(){
   alert("ss");
 }
+
+/*
 export async function loadUserCurs(user) {
 
 
@@ -299,6 +301,7 @@ export async function loadUserCurs(user) {
 });
 });
 }
+*/
 
 export async function toggleStar() {
 
