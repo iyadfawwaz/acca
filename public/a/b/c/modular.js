@@ -1,7 +1,7 @@
 
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
-  import { getDatabase, ref, set ,push,onValue,get,child,runTransaction,increment,update} 
+  import { getDatabase, ref, set ,push,onValue,get,child,runTransaction,increment,update,query} 
   from "https://www.gstatic.com/firebasejs/12.7.0/firebase-database.js";
     import { getAuth, signInWithEmailAndPassword,signOut} from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
   import moment from 'https://cdn.jsdelivr.net/npm/moment@2.29.4/+esm';
