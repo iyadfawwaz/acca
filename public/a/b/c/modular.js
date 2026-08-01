@@ -121,7 +121,7 @@ export var cursrate = [];
 
 export async function loadCurrencies(selectItem) {
   try {
-    const snapshotx = await get(child(databaseReferencex, "currencies"));
+    const snapshotx = await get((query(child(databaseReferencex, "currencies"),orderByChild("id")));
     if (!snapshotx.exists()) return curs;
 
     const fragment = document.createDocumentFragment();
