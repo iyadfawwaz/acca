@@ -806,7 +806,7 @@ export async function getLatest(username,currency){
   
    
   
-     return Number( users.val().account[currency].count);
+     return Number( users.val()?.account[currency]?.count) || 0;
   });
   return r;
 }
