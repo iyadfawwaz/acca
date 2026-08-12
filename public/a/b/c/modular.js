@@ -22,6 +22,16 @@
 };
 */
 export const firebaseConfigx = {
+  apiKey: "AIzaSyA5zQZnQsZsPxGRosGIDncS47xIDz_w7cw",
+  authDomain: "alix-ad710.firebaseapp.com",
+  databaseURL: "https://alix-ad710.firebaseio.com",
+  projectId: "alix-ad710",
+  storageBucket: "alix-ad710.appspot.com",
+  messagingSenderId: "341389404751",
+  appId: "1:341389404751:web:f1d9ec493179747885983a"
+};
+/*
+export const firebaseConfigx = {
   apiKey: "AIzaSyA8Wo9SVYsIfkXoP5shUz7d45ysTp8qOWw",
   authDomain: "iconic-indexer-315711.firebaseapp.com",
   databaseURL: "https://iconic-indexer-315711-default-rtdb.europe-west1.firebasedatabase.app",
@@ -31,6 +41,7 @@ export const firebaseConfigx = {
   appId: "1:971689870803:web:d8c88e5b067cfff5b6db26",
   measurementId: "G-ZZ5F52WXYY"
 };
+*/
 
 export const app = initializeApp(firebaseConfigx);
 const db = getDatabase(app);
