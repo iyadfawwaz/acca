@@ -705,26 +705,26 @@ export async function toggleStar() {
       if(cursender==curreceiver){
 
 		  sendertrans.latestAmount = await getLatest(sender,cursender)+Number(countsender+profitsender);
-        updates["transactions"+sender+"/accounts/"+key] = sendertrans;
+        updates["transactions/"+sender+"/accounts/"+key] = sendertrans;
 		  receivertrans.latestAmount = await getLatest(receiver,curreceiver)+Number(-countreceiver-profitreceiver);
-        updates["transactions"+receiver+"/accounts/"+key] = receivertrans;
+        updates["transactions/"+receiver+"/accounts/"+key] = receivertrans;
 		   
         
-        updates["users"+sender+"/account/"+cursender+"/count"] = increment(Number(countsender+profitsender));
-        updates["users"+receiver+"/account/"+curreceiver+"/count"] = increment(-Number(countreceiver+profitreceiver));
+        updates["users/"+sender+"/account/"+cursender+"/count"] = increment(Number(countsender+profitsender));
+        updates["users/"+receiver+"/account/"+curreceiver+"/count"] = increment(-Number(countreceiver+profitreceiver));
 
-          updates["users"+qued+"/account/"+cursender+"/count"]=increment(-Number(profitsender-profitreceiver));
+          updates["users/"+qued+"/account/"+cursender+"/count"]=increment(-Number(profitsender-profitreceiver));
         
         if(profitsender!=0 ){
            qued1trans.latestAmount = await getLatest(qued,cursender)+Number(-profitsender);
-          updates["transactions"+qued+"/accounts/"+key] = qued1trans;
+          updates["transactions/"+qued+"/accounts/"+key] = qued1trans;
 			
         
         }
         if(profitreceiver!=0){
 
 			qued2trans.latestAmount = await getLatest(qued,curreceiver)+Number(profitreceiver);
-          updates["transactions"+qued+"/accounts/"+Date.now().toString()] = qued2trans;
+          updates["transactions/"+qued+"/accounts/"+Date.now().toString()] = qued2trans;
 			 
       
         }
@@ -741,21 +741,21 @@ export async function toggleStar() {
         }else{
           if(cursender==dollar){
 
-        updates["transactions"+sender+"/accounts/"+key] = sendertrans;
-        updates["transactions"+receiver+"/accounts/"+key] = receivertrans;
+        updates["transactions/"+sender+"/accounts/"+key] = sendertrans;
+        updates["transactions/"+receiver+"/accounts/"+key] = receivertrans;
         
-        updates["transactions"+cutcenterreceiver+"/accounts/"+key] = cutcenterreceivertrans1;
-        updates["transactions"+cutcenterreceiver+"/accounts/"+Date.now().toString()] = cutcenterreceivertrans2;
+        updates["transactions/"+cutcenterreceiver+"/accounts/"+key] = cutcenterreceivertrans1;
+        updates["transactions/"+cutcenterreceiver+"/accounts/"+Date.now().toString()] = cutcenterreceivertrans2;
         
-        updates["transactions"+frog+"/accounts/"+key] = centraltrans;
+        updates["transactions/"+frog+"/accounts/"+key] = centraltrans;
 
-        updates["users"+sender+"/account/"+cursender+"/count"] = increment(Number(countsender+profitsender));
-        updates["users"+receiver+"/account/"+curreceiver+"/count"] = increment(-Number(countreceiver+profitreceiver));
+        updates["users/"+sender+"/account/"+cursender+"/count"] = increment(Number(countsender+profitsender));
+        updates["users/"+receiver+"/account/"+curreceiver+"/count"] = increment(-Number(countreceiver+profitreceiver));
         
-        updates["users"+cutcenterreceiver+"/account/"+cursender+"/count"] = increment(-Number((countreceiver+profitreceiver)/curs.get(curreceiver).rate));
-        updates["users"+cutcenterreceiver+"/account/"+curreceiver+"/count"] = increment(Number(countreceiver+profitreceiver));
+        updates["users/"+cutcenterreceiver+"/account/"+cursender+"/count"] = increment(-Number((countreceiver+profitreceiver)/curs.get(curreceiver).rate));
+        updates["users/"+cutcenterreceiver+"/account/"+curreceiver+"/count"] = increment(Number(countreceiver+profitreceiver));
         
-        updates["users"+frog+"/account/"+cursender+"/count"] = increment(-Number((countsender+profitsender)-((countreceiver+profitreceiver)/curs.get(curreceiver).rate)));
+        updates["users/"+frog+"/account/"+cursender+"/count"] = increment(-Number((countsender+profitsender)-((countreceiver+profitreceiver)/curs.get(curreceiver).rate)));
 
         update(child(databaseReference), updates);
 
