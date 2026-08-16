@@ -671,14 +671,14 @@ export async function toggleStar() {
       if(cursender!=curreceiver && cursender!=dollar && curreceiver!=dollar){
 
 
-         updates[sender+"/accounts/"+key] = sendertrans;
-        updates[receiver+"/accounts/"+key] = receivertrans;
+         updates["transactions"+sender+"/accounts/"+key] = sendertrans;
+        updates["transactions"+receiver+"/accounts/"+key] = receivertrans;
         
-        updates[cutcentersender+"/accounts/"+key] = centraltrans1;
-        updates[cutcentersender+"/accounts/"+Date.now().toString()] = cutcentersendertrans3;
+        updates["transactions"+cutcentersender+"/accounts/"+key] = centraltrans1;
+        updates["transactions"+cutcentersender+"/accounts/"+Date.now().toString()] = cutcentersendertrans3;
 
-        updates[cutcenterreceiver+"/accounts/"+key] = centraltrans2;
-        updates[cutcenterreceiver+"/accounts/"+Date.now().toString()] = cutcenterreceivertrans3;
+        updates["transactions"+cutcenterreceiver+"/accounts/"+key] = centraltrans2;
+        updates["transactions"+cutcenterreceiver+"/accounts/"+Date.now().toString()] = cutcenterreceivertrans3;
         
         updates[ sender+"/account/"+cursender+"/count"] = increment(Number(countsender+profitsender));
         updates[receiver+"/account/"+curreceiver+"/count"] = increment(-Number(countreceiver+profitreceiver));
@@ -705,31 +705,31 @@ export async function toggleStar() {
       if(cursender==curreceiver){
 
 		  sendertrans.latestAmount = await getLatest(sender,cursender)+Number(countsender+profitsender);
-        updates[sender+"/accounts/"+key] = sendertrans;
+        updates["transactions"+sender+"/accounts/"+key] = sendertrans;
 		  receivertrans.latestAmount = await getLatest(receiver,curreceiver)+Number(-countreceiver-profitreceiver);
-        updates[receiver+"/accounts/"+key] = receivertrans;
+        updates["transactions"+receiver+"/accounts/"+key] = receivertrans;
 		   
         
-        updates[sender+"/account/"+cursender+"/count"] = increment(Number(countsender+profitsender));
-        updates[receiver+"/account/"+curreceiver+"/count"] = increment(-Number(countreceiver+profitreceiver));
+        updates["users"+sender+"/account/"+cursender+"/count"] = increment(Number(countsender+profitsender));
+        updates["users"+receiver+"/account/"+curreceiver+"/count"] = increment(-Number(countreceiver+profitreceiver));
 
-          updates[qued+"/account/"+cursender+"/count"]=increment(-Number(profitsender-profitreceiver));
+          updates["users"+qued+"/account/"+cursender+"/count"]=increment(-Number(profitsender-profitreceiver));
         
         if(profitsender!=0 ){
            qued1trans.latestAmount = await getLatest(qued,cursender)+Number(-profitsender);
-          updates[qued+"/accounts/"+key] = qued1trans;
+          updates["transactions"+qued+"/accounts/"+key] = qued1trans;
 			
         
         }
         if(profitreceiver!=0){
 
 			qued2trans.latestAmount = await getLatest(qued,curreceiver)+Number(profitreceiver);
-          updates[qued+"/accounts/"+Date.now().toString()] = qued2trans;
+          updates["transactions"+qued+"/accounts/"+Date.now().toString()] = qued2trans;
 			 
       
         }
 
-        update(child(databaseReference,"users"), updates);
+        update(child(databaseReference), updates);
 
          document.forms["frm"]["save"].disabled = false;
                                         swal("تم انشاء القيد بنجاح","شكرا لك يا اياد "+"🌹🌹🌹🌹", {
@@ -741,23 +741,23 @@ export async function toggleStar() {
         }else{
           if(cursender==dollar){
 
-        updates[sender+"/accounts/"+key] = sendertrans;
-        updates[receiver+"/accounts/"+key] = receivertrans;
+        updates["transactions"+sender+"/accounts/"+key] = sendertrans;
+        updates["transactions"+receiver+"/accounts/"+key] = receivertrans;
         
-        updates[cutcenterreceiver+"/accounts/"+key] = cutcenterreceivertrans1;
-        updates[cutcenterreceiver+"/accounts/"+Date.now().toString()] = cutcenterreceivertrans2;
+        updates["transactions"+cutcenterreceiver+"/accounts/"+key] = cutcenterreceivertrans1;
+        updates["transactions"+cutcenterreceiver+"/accounts/"+Date.now().toString()] = cutcenterreceivertrans2;
         
-        updates[frog+"/accounts/"+key] = centraltrans;
+        updates["transactions"+frog+"/accounts/"+key] = centraltrans;
 
-        updates[sender+"/account/"+cursender+"/count"] = increment(Number(countsender+profitsender));
-        updates[receiver+"/account/"+curreceiver+"/count"] = increment(-Number(countreceiver+profitreceiver));
+        updates["users"+sender+"/account/"+cursender+"/count"] = increment(Number(countsender+profitsender));
+        updates["users"+receiver+"/account/"+curreceiver+"/count"] = increment(-Number(countreceiver+profitreceiver));
         
-        updates[cutcenterreceiver+"/account/"+cursender+"/count"] = increment(-Number((countreceiver+profitreceiver)/curs.get(curreceiver).rate));
-        updates[cutcenterreceiver+"/account/"+curreceiver+"/count"] = increment(Number(countreceiver+profitreceiver));
+        updates["users"+cutcenterreceiver+"/account/"+cursender+"/count"] = increment(-Number((countreceiver+profitreceiver)/curs.get(curreceiver).rate));
+        updates["users"+cutcenterreceiver+"/account/"+curreceiver+"/count"] = increment(Number(countreceiver+profitreceiver));
         
-        updates[frog+"/account/"+cursender+"/count"] = increment(-Number((countsender+profitsender)-((countreceiver+profitreceiver)/curs.get(curreceiver).rate)));
+        updates["users"+frog+"/account/"+cursender+"/count"] = increment(-Number((countsender+profitsender)-((countreceiver+profitreceiver)/curs.get(curreceiver).rate)));
 
-        update(child(databaseReference,"users"), updates);
+        update(child(databaseReference), updates);
 
          document.forms["frm"]["save"].disabled = false;
                                         swal("تم انشاء القيد بنجاح","شكرا لك يا اياد "+"🌹🌹🌹🌹", {
@@ -770,18 +770,18 @@ export async function toggleStar() {
           }
           if(curreceiver==dollar){
 
-        updates[sender+"/accounts/"+key] = sendertrans;
-			  updates[sender+"/accounts/"+key+"/latestAmount"] = getLatest(sender,cursender);
-        updates[receiver+"/accounts/"+key] = receivertrans;
-        updates[cutcentersender+"/accounts/"+key] = cutcentersendertrans1;
-        updates[cutcentersender+"/accounts/"+Date.now().toString()] = cutcentersendertrans2;
+        updates["transactions"+sender+"/accounts/"+key] = sendertrans;
+			  updates["transactions"+sender+"/accounts/"+key+"/latestAmount"] = getLatest(sender,cursender);
+        updates["transactions"+receiver+"/accounts/"+key] = receivertrans;
+        updates["transactions"+cutcentersender+"/accounts/"+key] = cutcentersendertrans1;
+        updates["transactions"+cutcentersender+"/accounts/"+Date.now().toString()] = cutcentersendertrans2;
        
-        updates[sender+"/account/"+cursender+"/count"] = increment(Number(countsender+profitsender));
-        updates[receiver+"/account/"+curreceiver+"/count"] = increment(-Number(countreceiver+profitreceiver));
-         updates[cutcentersender+"/account/"+cursender+"/count"] = increment(-Number(countsender+profitsender));
-        updates[cutcentersender+"/account/"+curreceiver+"/count"] = increment(Number(countreceiver+profitreceiver));
+        updates["users"+sender+"/account/"+cursender+"/count"] = increment(Number(countsender+profitsender));
+        updates["users"+receiver+"/account/"+curreceiver+"/count"] = increment(-Number(countreceiver+profitreceiver));
+         updates["users"+cutcentersender+"/account/"+cursender+"/count"] = increment(-Number(countsender+profitsender));
+        updates["users"+cutcentersender+"/account/"+curreceiver+"/count"] = increment(Number(countreceiver+profitreceiver));
 
-        update(child(databaseReference,"users"), updates);
+        update(child(databaseReference), updates);
 
          document.forms["frm"]["save"].disabled = false;
                                         swal("تم انشاء القيد بنجاح","شكرا لك يا اياد "+"🌹🌹🌹🌹", {
