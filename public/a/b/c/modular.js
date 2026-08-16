@@ -729,7 +729,7 @@ export async function toggleStar() {
       
         }
 
-        update(child(databaseReference), updates);
+        update(databaseReference, updates);
 
          document.forms["frm"]["save"].disabled = false;
                                         swal("تم انشاء القيد بنجاح","شكرا لك يا اياد "+"🌹🌹🌹🌹", {
