@@ -794,6 +794,13 @@ export async function getLatest(username,currency){
         
 
         update(databaseReference, updates);
+        document.forms["frmx"]["savex"].disabled = false;
+                                        swal("تم انشاء القيد بنجاح","شكرا لك يا اياد "+"🌹🌹🌹🌹", {
+                                            button: false,
+                                            closeOnClickOutside: false,
+                                            icon: "success",
+                                            timer: 3000
+                                        });
 
 
                                       }else{
@@ -839,8 +846,15 @@ export async function getLatest(username,currency){
          updates["users/"+cutcentersender+"/account/"+cursender+"/count"] = increment(-Number(countsender));
         updates["users/"+cutcentersender+"/account/"+curreceiver+"/count"] = increment(Number(countreceiver));
 
-        update(databaseReference, updates);
+          update(databaseReference, updates);
 
+          document.forms["frmx"]["savex"].disabled = false;
+                                        swal("تم انشاء القيد بنجاح","شكرا لك يا اياد "+"🌹🌹🌹🌹", {
+                                            button: false,
+                                            closeOnClickOutside: false,
+                                            icon: "success",
+                                            timer: 3000
+                                        });
        
           }
 
