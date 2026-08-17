@@ -676,6 +676,7 @@ export async function getLatest(username,currency){
             sprofit: 0,
             sumAll: -Number(countreceiver/curs.get(curreceiver).rate)
       }
+      
 
       const cutcenterreceivertrans2 = {
          checked: false,
