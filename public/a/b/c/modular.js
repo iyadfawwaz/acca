@@ -1,5 +1,4 @@
 
-  // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
   import { getDatabase, ref, set ,push,onValue,get,child,runTransaction,increment,update,query,orderByChild} 
   from "https://www.gstatic.com/firebasejs/12.7.0/firebase-database.js";
@@ -7,20 +6,8 @@
   import moment from 'https://cdn.jsdelivr.net/npm/moment@2.29.4/+esm';
   
 
-  //const company = localStorage.getItem("companyid")+"/";
-   const company ="company12345/";
-/*
-  export const firebaseConfigx = {
-  apiKey: "AIzaSyC0esGNBo2_2w4JucRans9zBZulhgTAbb0",
-  authDomain: "sy-iyad.firebaseapp.com",
-  databaseURL: "https://sy-iyad-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "sy-iyad",
-  storageBucket: "sy-iyad.firebasestorage.app",
-  messagingSenderId: "873740808897",
-  appId: "1:873740808897:web:f1c636369a510256e41a40",
-  measurementId: "G-7VLX9WHL3H"
-};
-*/
+
+
 export const firebaseConfigx = {
   apiKey: "AIzaSyA5zQZnQsZsPxGRosGIDncS47xIDz_w7cw",
   authDomain: "alix-ad710.firebaseapp.com",
@@ -30,23 +17,11 @@ export const firebaseConfigx = {
   messagingSenderId: "341389404751",
   appId: "1:341389404751:web:f1d9ec493179747885983a"
 };
-/*
-export const firebaseConfigx = {
-  apiKey: "AIzaSyA8Wo9SVYsIfkXoP5shUz7d45ysTp8qOWw",
-  authDomain: "iconic-indexer-315711.firebaseapp.com",
-  databaseURL: "https://iconic-indexer-315711-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "iconic-indexer-315711",
-  storageBucket: "iconic-indexer-315711.firebasestorage.app",
-  messagingSenderId: "971689870803",
-  appId: "1:971689870803:web:d8c88e5b067cfff5b6db26",
-  measurementId: "G-ZZ5F52WXYY"
-};
-*/
+
 
 export const app = initializeApp(firebaseConfigx);
 const db = getDatabase(app);
   const auth = getAuth(app);
-  //const companyx = "ySDqBLEsP4fEorxCVlXfdeMzqs53/";
 
   var companyx=localStorage.getItem("userId");
 
@@ -65,38 +40,6 @@ console.log(companyx);
   var printSelect = document.getElementById("select4");
   var printcurrency = document.getElementById("currency");
 
-
-  /*
-export function loadusers(selectItem){
-
-get(child(databaseReferencex,"users")).then((snapshotx)=>{
-
-
-  snapshotx.forEach((childSnapshot)=>{
-
-    var userinfo = childSnapshot.val();
-    var username = childSnapshot.key;
-     
-        var senderoption = document.createElement("option");
-        //var receiveroption = document.createElement("option");
-        //  
-        senderoption.style.cursor = "none !important";
-        senderoption.text = username;
-        senderoption.textContent = username;
-        senderoption.value = userinfo.uid;
-       // receiveroption.style.cursor = "none !important";
-       // receiveroption.text = username;
-       // receiveroption.textContent = username;
-      //  receiveroption.value = userinfo.uid;
-        selectItem.appendChild(senderoption);
-       // receiverx.appendChild(receiveroption);
-        $(selectItem).trigger("chosen:updated");
-       // $('#input').trigger("chosen:updated");
-  });
-
-});
-}
-*/
 
 export function loadusers(selectItem) {
   get(child(databaseReferencex, "users")).then((snapshotx) => {
@@ -226,57 +169,6 @@ return curs;
 }
 
 
-/*
-export async function loadCurrencies(selectItem){
-
-
- 
-  await get(child(databaseReferencex,"currencies")).then((snapshotx)=>{
-    
-
-    var x = 0;
-    snapshotx.forEach((childSnapshot)=>{
-      var currencyinfo = childSnapshot.val();
-      var currencyname = childSnapshot.key; 
-      var currencyCode = currencyinfo.code;
-
-        var currencyfromoption = document.createElement("option");
-        //var currencytooption = document.createElement("option");
-        //  
-       // currencytooption.style.cursor = "none !important";
-
-        currencyfromoption.style.cursor = "none !important";
-        currencyfromoption.text = currencyname;
-        currencyfromoption.textContent = currencyname;
-        currencyfromoption.value = currencyinfo.code;
-        selectItem.appendChild(currencyfromoption);
-        //currencytooption.text = currencyname;
-       // currencytooption.textContent = currencyname;
-       // currencytooption.value = currencyinfo.code;
-       // curreceiverx.appendChild(currencytooption);
-        $(selectItem).trigger("chosen:updated");
-        //$('#currencyfrom').trigger("chosen:updated");
-       // if(currencyCode === "USD"){
-          curs.set(currencyname,currencyinfo);
-          //localStorage.setItem(x,currencyinfo);
-          cursrate[currencyCode]=currencyinfo;
-       // }
-       
-        
-  });
-  x++;
- 
-  //return snapshotx;
-  //curs.push(snapshotx);
- 
-});
-
-
-//return Promise.resolve(curs);
-return curs;
-}
-*/
-
  export function logg(){
  
 console.error(curs.get("دولار أمريكي").rate);
@@ -284,146 +176,6 @@ console.error(curs.get("دولار أمريكي").rate);
 export function ss(){
   alert("ss");
 }
-
-/*
-export async function toggleStar() {
-  // 1. قراءة البيانات من عناصر الواجهة وتأمين تحويل الأرقام
-  let sender = senderx[senderx.selectedIndex]?.text || "";
-  let receiver = receiverx[receiverx.selectedIndex]?.text || "";
-  let cursender = cursenderx[cursenderx.selectedIndex]?.text || "";
-  let curreceiver = curreceiverx[curreceiverx.selectedIndex]?.text || "";
-  
-  var countsender = Number(countsenderx.value) || 0;
-  var countreceiver = Number(countreceiverx.value) || 0;
-  var profitsender = Number(profitsenderx.value) || 0;
-  var profitreceiver = Number(profitreceiverx.value) || 0;
-  var customer = customerx.value || "";
-  
-  // توليد طابع زمني دقيق للمفتاح والترتيب الزمني المستقبلي
-  var key = Date.now().toString();
-  var date = moment().format('DD-MM-YYYY');
-
-  // تعطيل زر الحفظ فوراً لمنع التكرار والنقرات المزدوجة من المستخدم
-  const saveButton = document.forms["frm"]?.["save"];
-  if (saveButton) saveButton.disabled = true;
-
-  // تجهيز مسميات مراكز القطع والقيود المحاسبية
-  var cutcentersender = "مركز قطع " + cursender;
-  var cutcenterreceiver = "مركز قطع " + curreceiver;
-  const dollar = "دولار أمريكي";
-  const frog = "فروق صرف إيجابية";
-  var qued = "قيود محققة";
-
-  // 2. بناء كائنات البيانات (القيود)
-  const sendertrans = {
-    checked: false,
-    count: countsender,
-    customer: customer,
-    date: date,
-    ex: cursender,
-    key: key,
-    notice: "",
-    reciever: receiver,
-    rprofit: profitreceiver,
-    sender: sender,
-    sprofit: profitsender,
-    latestAmount: 0,
-    sumAll: Number(countsender + profitsender)
-  };
-     
-  const receivertrans = {
-    checked: false,
-    count: countreceiver,
-    customer: customer,
-    date: date,
-    ex: curreceiver,
-    key: key,
-    notice: "",
-    reciever: receiver,
-    rprofit: profitreceiver,
-    latestAmount: 0,
-    sender: sender,
-    sprofit: profitsender,
-    sumAll: -Number(countreceiver + profitreceiver)
-  };
-
-  const qued1trans = {
-    checked: false,
-    count: profitsender,
-    customer: customer,
-    date: date,
-    latestAmount: 0,
-    ex: cursender,
-    key: key,
-    notice: "ربح من معاملة قيد"
-  };
-
-  // 3. الحل العبقري: تجميع كل مسارات التحديث في كائن واحد (Multi-Path Update Object)
-  // هذا الأسلوب يضمن حفظ كل الحركات أو فشلها معاً بدون تعليق الاتصال
-  const updatedData = {};
-
-  // مسار حفظ حركة المركز المرسل
-  updatedData[`/transactions/${key}_sender`] = sendertrans;
-  // مسار حفظ حركة المركز المستلم
-  updatedData[`/transactions/${key}_receiver`] = receivertrans;
-  // مسار حفظ حركة قيد الأرباح
-  updatedData[`/transactions/${key}_profit`] = qued1trans;
-
-  // تحديث الأرصدة الحالية التراكمية للمراكز مباشرة في نفس الطلب عبر السيرفر
-  // استخدام increment يمنع مشاكل تضارب البيانات في حال أدخل مستخدمان في نفس اللحظة
-  updatedData[`/users/${sender}/account/${cursender}/count`] = increment(sendertrans.sumAll);
-  updatedData[`/users/${receiver}/account/${curreceiver}/count`] = increment(receivertrans.sumAll);
-
-  try {
-    // إرسال الطلب الموحد دفعة واحدة للسيرفر
-    await update(ref(db, companyx), updatedData);
-    
-    // إشعار بنجاح العملية وتصفير النموذج
-    alert("تم حفظ القيد وتحديث الأرصدة بنجاح ولحظياً!");
-    document.forms["frm"]?.reset();
-    
-    // تحديث الأرصدة المعروضة على الشاشة للمستخدم الحالي محلياً
-    if (typeof loadUserCurs === "function") {
-      await loadUserCurs(sender);
-    }
-  } catch (error) {
-    console.error("خطأ أثناء الحفظ الموحد والتحديث:", error);
-    alert("حدث خطأ أثناء الحفظ، يرجى التحقق من الشبكة.");
-  } finally {
-    // إعادة تفعيل زر الحفظ بعد انتهاء العملية بالكامل
-    if (saveButton) saveButton.disabled = false;
-  }
-}
-*/
-
-/*
-export async function loadUserCurs(user) {
-
-
-    await get(child(databaseReferencex,'currencies')).then((snapshotx)=>{
-    
-      snapshotx.forEach(item =>{
-
-       get(child(databaseReferencex,'users/'+user+'/account/'+item.key)).then((snapshotxm)=>{
-  
-
-      var t= document.getElementById(item.val().code);
-      if(snapshotxm.val()){
-      t.innerText=snapshotxm.val().count;
-		  if(snapshotxm.val().count>0){
-			  t.style.color="green";
-		  }else{
-			  t.style.color="red";
-		  }
-      }else{
-        t.innerText="0";
-      }
-      });
- 
-});
-});
-}
-*/
 
 
 export async function toggleStar() {
@@ -671,26 +423,26 @@ export async function toggleStar() {
       if(cursender!=curreceiver && cursender!=dollar && curreceiver!=dollar){
 
 
-         updates["transactions"+sender+"/accounts/"+key] = sendertrans;
-        updates["transactions"+receiver+"/accounts/"+key] = receivertrans;
+         updates["transactions/"+sender+"/accounts/"+key] = sendertrans;
+        updates["transactions/"+receiver+"/accounts/"+key] = receivertrans;
         
-        updates["transactions"+cutcentersender+"/accounts/"+key] = centraltrans1;
-        updates["transactions"+cutcentersender+"/accounts/"+Date.now().toString()] = cutcentersendertrans3;
+        updates["transactions/"+cutcentersender+"/accounts/"+key] = centraltrans1;
+        updates["transactions/"+cutcentersender+"/accounts/"+Date.now().toString()] = cutcentersendertrans3;
 
-        updates["transactions"+cutcenterreceiver+"/accounts/"+key] = centraltrans2;
-        updates["transactions"+cutcenterreceiver+"/accounts/"+Date.now().toString()] = cutcenterreceivertrans3;
+        updates["transactions/"+cutcenterreceiver+"/accounts/"+key] = centraltrans2;
+        updates["transactions/"+cutcenterreceiver+"/accounts/"+Date.now().toString()] = cutcenterreceivertrans3;
         
-        updates[ sender+"/account/"+cursender+"/count"] = increment(Number(countsender+profitsender));
-        updates[receiver+"/account/"+curreceiver+"/count"] = increment(-Number(countreceiver+profitreceiver));
+        updates["users/"+ sender+"/account/"+cursender+"/count"] = increment(Number(countsender+profitsender));
+        updates["users/"+receiver+"/account/"+curreceiver+"/count"] = increment(-Number(countreceiver+profitreceiver));
 
-        updates[cutcentersender+"/account/"+dollar+"/count"] = increment(-Number((countreceiver+profitreceiver)/curs.get(curreceiver).rate));
-        updates[cutcentersender+"/account/"+cursender+"/count"] = increment(Number(countsender+profitsender));
+        updates["users/"+cutcentersender+"/account/"+dollar+"/count"] = increment(-Number((countreceiver+profitreceiver)/curs.get(curreceiver).rate));
+        updates["users/"+cutcentersender+"/account/"+cursender+"/count"] = increment(Number(countsender+profitsender));
         
-        updates[cutcenterreceiver+"/account/"+dollar+"/count"] = increment(Number((countreceiver+profitreceiver)/curs.get(curreceiver).rate));
-        updates[cutcenterreceiver+"/account/"+curreceiver+"/count"] = increment(-Number(countreceiver+profitreceiver));
+        updates["users/"+cutcenterreceiver+"/account/"+dollar+"/count"] = increment(Number((countreceiver+profitreceiver)/curs.get(curreceiver).rate));
+        updates["users/"+cutcenterreceiver+"/account/"+curreceiver+"/count"] = increment(-Number(countreceiver+profitreceiver));
         
 
-        update(child(databaseReference,"users"), updates);
+        update(databaseReference, updates);
 
          document.forms["frm"]["save"].disabled = false;
                                         swal("تم انشاء القيد بنجاح","شكرا لك يا اياد "+"🌹🌹🌹🌹", {
@@ -757,7 +509,7 @@ export async function toggleStar() {
         
         updates["users/"+frog+"/account/"+cursender+"/count"] = increment(-Number((countsender+profitsender)-((countreceiver+profitreceiver)/curs.get(curreceiver).rate)));
 
-        update(child(databaseReference), updates);
+        update(databaseReference, updates);
 
          document.forms["frm"]["save"].disabled = false;
                                         swal("تم انشاء القيد بنجاح","شكرا لك يا اياد "+"🌹🌹🌹🌹", {
@@ -770,18 +522,18 @@ export async function toggleStar() {
           }
           if(curreceiver==dollar){
 
-        updates["transactions"+sender+"/accounts/"+key] = sendertrans;
-			  updates["transactions"+sender+"/accounts/"+key+"/latestAmount"] = getLatest(sender,cursender);
-        updates["transactions"+receiver+"/accounts/"+key] = receivertrans;
-        updates["transactions"+cutcentersender+"/accounts/"+key] = cutcentersendertrans1;
-        updates["transactions"+cutcentersender+"/accounts/"+Date.now().toString()] = cutcentersendertrans2;
+        updates["transactions/"+sender+"/accounts/"+key] = sendertrans;
+			  updates["transactions/"+sender+"/accounts/"+key+"/latestAmount"] = getLatest(sender,cursender);
+        updates["transactions/"+receiver+"/accounts/"+key] = receivertrans;
+        updates["transactions/"+cutcentersender+"/accounts/"+key] = cutcentersendertrans1;
+        updates["transactions/"+cutcentersender+"/accounts/"+Date.now().toString()] = cutcentersendertrans2;
        
-        updates["users"+sender+"/account/"+cursender+"/count"] = increment(Number(countsender+profitsender));
-        updates["users"+receiver+"/account/"+curreceiver+"/count"] = increment(-Number(countreceiver+profitreceiver));
-         updates["users"+cutcentersender+"/account/"+cursender+"/count"] = increment(-Number(countsender+profitsender));
+        updates["users/"+sender+"/account/"+cursender+"/count"] = increment(Number(countsender+profitsender));
+        updates["users/"+receiver+"/account/"+curreceiver+"/count"] = increment(-Number(countreceiver+profitreceiver));
+         updates["users/"+cutcentersender+"/account/"+cursender+"/count"] = increment(-Number(countsender+profitsender));
         updates["users"+cutcentersender+"/account/"+curreceiver+"/count"] = increment(Number(countreceiver+profitreceiver));
 
-        update(child(databaseReference), updates);
+        update(databaseReference, updates);
 
          document.forms["frm"]["save"].disabled = false;
                                         swal("تم انشاء القيد بنجاح","شكرا لك يا اياد "+"🌹🌹🌹🌹", {
@@ -842,7 +594,7 @@ export async function getLatest(username,currency){
       var sender = user;
       var receiver = user;
        var cutcentersender = "مركز قطع "+cursender;
-      var cutcenterreceiver = " مركز قطع "+curreceiver;
+      var cutcenterreceiver = "مركز قطع "+curreceiver;
 
       const dollar = "دولار أمريكي";
       const frog = "فروق صرف إيجابية";
@@ -1022,48 +774,48 @@ export async function getLatest(username,currency){
       if(cursender!=curreceiver && cursender!=dollar && curreceiver!=dollar){
 
 
-         updates[user+"/accounts/"+key] = sendertrans;
-        updates[user+"/accounts/"+Date.now().toString()] = receivertrans;
+         updates["transactions/"+user+"/accounts/"+key] = sendertrans;
+        updates["transactions/"+user+"/accounts/"+Date.now().toString()] = receivertrans;
         
-        updates[cutcentersender+"/accounts/"+key] = centraltrans1;
-        updates[cutcentersender+"/accounts/"+Date.now().toString()] = cutcentersendertrans3;
+        updates["transactions/"+cutcentersender+"/accounts/"+key] = centraltrans1;
+        updates["transactions/"+cutcentersender+"/accounts/"+Date.now().toString()] = cutcentersendertrans3;
 
-        updates[cutcenterreceiver+"/accounts/"+key] = centraltrans2;
-        updates[cutcenterreceiver+"/accounts/"+Date.now().toString()] = cutcenterreceivertrans3;
+        updates["transactions/"+cutcenterreceiver+"/accounts/"+key] = centraltrans2;
+        updates["transactions/"+cutcenterreceiver+"/accounts/"+Date.now().toString()] = cutcenterreceivertrans3;
         
-        updates[ user+"/account/"+cursender+"/count"] = increment(Number(countsender));
-        updates[user+"/account/"+receiver+"/count"] = increment(-Number(countreceiver));
+        updates["users/"+user+"/account/"+cursender+"/count"] = increment(Number(countsender));
+        updates["users/"+user+"/account/"+receiver+"/count"] = increment(-Number(countreceiver));
 
-        updates[cutcentersender+"/account/"+dollar+"/count"] = increment(-Number((countreceiver)/curs.get(curreceiver).rate));
-        updates[cutcentersender+"/account/"+cursender+"/count"] = increment(Number(countsender));
+        updates["users/"+cutcentersender+"/account/"+dollar+"/count"] = increment(-Number((countreceiver)/curs.get(curreceiver).rate));
+        updates["users/"+cutcentersender+"/account/"+cursender+"/count"] = increment(Number(countsender));
         
-        updates[cutcenterreceiver+"/account/"+dollar+"/count"] = increment(Number((countreceiver)/curs.get(curreceiver).rate));
-        updates[cutcenterreceiver+"/account/"+curreceiver+"/count"] = increment(-Number(countreceiver));
+        updates["users/"+cutcenterreceiver+"/account/"+dollar+"/count"] = increment(Number((countreceiver)/curs.get(curreceiver).rate));
+        updates["users/"+cutcenterreceiver+"/account/"+curreceiver+"/count"] = increment(-Number(countreceiver));
         
 
-        update(child(databaseReference,"users"), updates);
+        update(databaseReference, updates);
 
 
                                       }else{
           if(cursender==dollar){
 
-        updates[user+"/accounts/"+key] = sendertrans;
-        updates[user+"/accounts/"+Date.now().toString()] = receivertrans;
+        updates["transactions/"+user+"/accounts/"+key] = sendertrans;
+        updates["transactions/"+user+"/accounts/"+Date.now().toString()] = receivertrans;
         
-        updates[cutcenterreceiver+"/accounts/"+key] = cutcenterreceivertrans1;
-        updates[cutcenterreceiver+"/accounts/"+Date.now().toString()] = cutcenterreceivertrans2;
+        updates["transactions/"+cutcenterreceiver+"/accounts/"+key] = cutcenterreceivertrans1;
+        updates["transactions/"+cutcenterreceiver+"/accounts/"+Date.now().toString()] = cutcenterreceivertrans2;
         
-        updates[frog+"/accounts/"+key] = centraltrans;
+        updates["transactions/"+frog+"/accounts/"+key] = centraltrans;
 
-        updates[user+"/account/"+cursender+"/count"] = increment(Number(countsender));
-        updates[user+"/account/"+curreceiver+"/count"] = increment(-Number(countreceiver));
+        updates["users/"+user+"/account/"+cursender+"/count"] = increment(Number(countsender));
+        updates["users/"+user+"/account/"+curreceiver+"/count"] = increment(-Number(countreceiver));
         
-        updates[cutcenterreceiver+"/account/"+cursender+"/count"] = increment(-Number((countreceiver)/curs.get(curreceiver).rate));
-        updates[cutcenterreceiver+"/account/"+curreceiver+"/count"] = increment(Number(countreceiver));
+        updates["users/"+cutcenterreceiver+"/account/"+cursender+"/count"] = increment(-Number((countreceiver)/curs.get(curreceiver).rate));
+        updates["users/"+cutcenterreceiver+"/account/"+curreceiver+"/count"] = increment(Number(countreceiver));
         
-        updates[frog+"/account/"+cursender+"/count"] = increment(-Number((countsender)-((countreceiver)/curs.get(curreceiver).rate)));
+        updates["users/"+frog+"/account/"+cursender+"/count"] = increment(-Number((countsender)-((countreceiver)/curs.get(curreceiver).rate)));
 
-        update(child(databaseReference,"users"), updates);
+        update(databaseReference, updates);
 
          document.forms["frmx"]["savex"].disabled = false;
                                         swal("تم انشاء القيد بنجاح","شكرا لك يا اياد "+"🌹🌹🌹🌹", {
@@ -1076,18 +828,18 @@ export async function getLatest(username,currency){
           }
           if(curreceiver==dollar){
 
-        updates[user+"/accounts/"+key] = sendertrans;
-        updates[user+"/accounts/"+Date.now().toString()] = receivertrans;
+        updates["transactions/"+user+"/accounts/"+key] = sendertrans;
+        updates["transactions/"+user+"/accounts/"+Date.now().toString()] = receivertrans;
         
-        updates[cutcentersender+"/accounts/"+key] = cutcentersendertrans1;
-        updates[cutcentersender+"/accounts/"+Date.now().toString()] = cutcentersendertrans2;
+        updates["transactions/"+cutcentersender+"/accounts/"+key] = cutcentersendertrans1;
+        updates["transactions/"+cutcentersender+"/accounts/"+Date.now().toString()] = cutcentersendertrans2;
        
-        updates[user+"/account/"+cursender+"/count"] = increment(Number(countsender));
-        updates[user+"/account/"+curreceiver+"/count"] = increment(-Number(countreceiver));
-         updates[cutcentersender+"/account/"+cursender+"/count"] = increment(-Number(countsender));
-        updates[cutcentersender+"/account/"+curreceiver+"/count"] = increment(Number(countreceiver));
+        updates["users/"+user+"/account/"+cursender+"/count"] = increment(Number(countsender));
+        updates["users/"+user+"/account/"+curreceiver+"/count"] = increment(-Number(countreceiver));
+         updates["users/"+cutcentersender+"/account/"+cursender+"/count"] = increment(-Number(countsender));
+        updates["users/"+cutcentersender+"/account/"+curreceiver+"/count"] = increment(Number(countreceiver));
 
-        update(child(databaseReference,"users"), updates);
+        update(databaseReference, updates);
 
        
           }
