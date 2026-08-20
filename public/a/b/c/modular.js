@@ -785,7 +785,7 @@ export async function getLatest(username,currency){
         updates["transactions/"+cutcenterreceiver+"/accounts/"+Date.now().toString()] = cutcenterreceivertrans3;
         
         updates["users/"+user+"/account/"+cursender+"/count"] = increment(Number(countsender));
-        updates["users/"+user+"/account/"+receiver+"/count"] = increment(-Number(countreceiver));
+        updates["users/"+user+"/account/"+curreceiver+"/count"] = increment(-Number(countreceiver));
 
         updates["users/"+cutcentersender+"/account/"+dollar+"/count"] = increment(-Number((countreceiver)/curs.get(curreceiver).rate));
         updates["users/"+cutcentersender+"/account/"+cursender+"/count"] = increment(Number(countsender));
